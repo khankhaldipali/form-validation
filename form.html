@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>form validation</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-size: 30px;
+			font-weight: 500;
+			padding: 20px;
+			padding-left: 100px;
+		}
+
+		#gender {
+			width: 20px;
+			height: 20px;
+		}
+
+		.square {
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		function form() {
+			var name = document.getElementById('name').value;
+			var email = document.getElementById('email').value;
+			var contact = document.getElementById('contact').value;
+			var password = document.getElementById('password').value;
+
+
+			var nam = new RegExp("^(?=.*[A-Z])");
+			var pass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})");
+			var phone = new RegExp("^(?=.{10,})([0-9])");
+			var mail = new RegExp("^(?=.*[@])(?=.*[.])");
+
+			if (name == '') {
+				document.getElementById('b1').innerHTML = "Enter Your Name....!";
+				return false;
+			}
+			if (!nam.test(name)) {
+				document.getElementById('b1').innerHTML = "You should not allow add any special charcters and numbers.....!";
+				return false;
+			}
+			if (email == '') {
+				document.getElementById('b2').innerHTML = "Enter Your Email....!";
+				return false;
+			}
+			if (!mail.test(email)) {
+				document.getElementById('b2').innerHTML = "Must be contain @ and .";
+				return false;
+			}
+			if (contact == '') {
+				document.getElementById('b3').innerHTML = "Enter Your Mobile Number....!";
+				return false;
+			}
+			if (!phone.test(contact)) {
+				document.getElementById('b3').innerHTML = "Must be contain only numbers";
+				return false;
+			}
+			if (password == '') {
+				document.getElementById('b4').innerHTML = "Enter Passwrd....!";
+				return false;
+			}
+			if (!pass.test(password)) {
+				document.getElementById('b4').innerHTML = "Must be contain atleast one special charcters,uppercase latter ,lower case latter and number";
+				return false;
+			}
+			if (gender == '') {
+				alert("select gender");
+				return false;
+			}
+			if (city == '') {
+				alert("select city");
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<form onsubmit="return form();">
+		<div class="row">
+			<div class="col-2">
+				Name:
+			</div>
+			<div class="col-10">
+				<input type="text" name="" value="" id="name" placeholder="Enter your name">
+				<span id="b1" style="color:darkred ;"></span>
+				<br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				Email:
+			</div>
+			<div class="col-10">
+				<input type="email" name="" value="" id="email" placeholder="Enter Email">
+				<span id="b2" style="color:darkred ;"></span>
+				<br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				Mobile no:
+			</div>
+			<div class="col-10">
+				<input type="text" name="" id="contact" maxlength="10">
+				<span id="b3" style="color:darkred ;"></span>
+				<br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				Gender:
+			</div>
+			<div class="col-10">
+				<label><input type="radio" name="gen" id="gender" checked="true"> Male</label><br>
+				<label><input type="radio" name="gen" id="gender"> Female</label><br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				Hobbies:
+			</div>
+			<div class="col-10">
+				<label><input type="checkbox" name="" checked class="square" id="hobby"> Cricket</label><br>
+				<label><input type="checkbox" name="" class="square" id="hobby"> Travelling</label><br>
+				<label><input type="checkbox" name="" class="square" id="hobby"> Music</label><br>
+				<label><input type="checkbox" name="" class="square" id="hobby"> Cooking</label><br>
+				<label><input type="checkbox" name="" class="square" id="hobby"> Other</label><br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				Password:
+			</div>
+			<div class="col-10">
+				<input type="password" id="password" maxlength="12">
+				<span id="b4" style="color:darkred ;"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				City:
+			</div>
+			<div class="col-10">
+				<select required="true">
+					<option id="city">..Select City..</option>
+					<option id="city" selected>Surat</option>
+					<option id="city">Baroda</option>
+					<option id="city">Ahemdabad</option>
+					<option id="city">Vapi</option>
+					<option id="city">Navsari</option>
+				</select><br><br>
+			</div>
+		</div>
+		<div class="row ms-5">
+			<div class="col ms-5">
+				<input type="submit" name="" value="Submit">
+			</div>
+		</div>
+	</form>
+
+
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
